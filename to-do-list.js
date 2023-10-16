@@ -76,14 +76,14 @@ function funMake(listName) {
     let addToRB = document.getElementById('RB');
     addToRB.innerHTML = stuffCode;
 
-    //inserts the saved things
+    //Inserts the Saved Things
     funCheckSaves(listName);
 
     const add = document.getElementById('add')
     add.addEventListener('click', () => funToDo(listName));
 }
 
-//things user wants to add to todo
+//Things User Wants to Add to the Todo
 function funToDo() {
     let typedElement = document.getElementById('to-do-add');
     let typedThingToDo = typedElement.value.trim();
@@ -113,16 +113,16 @@ function funToDo() {
         let addToTD = document.getElementById('to-do');
         addToTD.append(emptyDivTD);
 
-        //Edit functionability
+        //Edit Functionability
         funEdit();
 
-        //saving things
+        //Saving Things
         saveMe(typedThingToDo);
 
-        //add functionability to Check Box
+        //Add Functionability to Check Box
         funCheck();
 
-        //add functionabillity to del button
+        //Add Functionabillity to Del Button
         funButtonDel();
 
         // Clears the input after adding the item
