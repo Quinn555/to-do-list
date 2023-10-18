@@ -20,6 +20,7 @@ function funListName() {
     let LNInput = document.getElementById('name');
     let listName = LNInput.value.trim();
     funTitleMaking(listName);
+
     //deletes the input
     LNInput.value = "";
 }
@@ -65,7 +66,7 @@ function funMake(listName) {
             </div>
             <div class="row">
                 <div class="center">
-                    <input type="search" id="word-search">
+                    <input type="search" placeholder="Search Here" id="word-search">
                 </div>
                 <div class="center">
                     <button id="select-search">Search</button>
@@ -271,7 +272,8 @@ function funCheck(){
 
 //Search
 function funSearch() {
-    let word = document.getElementById('word-search').value.toLowerCase().trim();
+    let wordGet = document.getElementById('word-search');
+    let word = wordGet.value.toLowerCase().trim();
     const h4s = document.querySelectorAll('h4');
 
     for (let i = 0; i < h4s.length; i++) {
@@ -285,6 +287,7 @@ function funSearch() {
             thingTNS.style.display = '';
         }
     }
+    wordGet.value = "";
 }
 
 
