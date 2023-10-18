@@ -3,16 +3,19 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 html {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  background-color: rgb(34, 34, 34);
+  background-color: rgb(68, 68, 68);
+  overflow-x: hidden;
 }
 
 body {
-  width: 100vh;
-  height: 98vh;
-  border: 1px solid rgba(199, 199, 199, 0.845);
+  width: 100%;
+  height: 100%;
   box-shadow: 0 0 15px 1px rgba(243, 243, 243, 0.888);
+  margin: 0;
 }
 
 .top {
@@ -23,8 +26,10 @@ body {
   height: 8%;
   background-color: rgb(68, 68, 68);
   color: white;
+  border-bottom: 1px solid rgb(68, 68, 68);
 }
-.top .top-icons {
+
+.top-icons {
   color: rgb(165, 165, 165);
   display: flex;
   justify-content: space-between;
@@ -37,52 +42,58 @@ body {
 }
 
 .left-bottom {
-  padding-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   width: 30%;
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(222, 222, 222);
   overflow-y: scroll;
 }
 
 .width-full {
   display: flex;
   justify-content: center;
-  height: 4%;
+  height: 51.81px;
   background-color: white;
 }
-.width-full .max {
-  box-shadow: 0 0 1px 1px rgba(126, 126, 126, 0.888);
+
+.max {
+  background-color: white;
   overflow-y: scroll;
   padding: 0;
-  margin: 0;
-  width: 99%;
+  margin-left: 20px;
+  height: 51.81px;
+  width: 100%;
   border: none;
 }
 
+input:focus {
+  outline: none;
+}
+
 .gray-box {
+  padding-left: 20px;
   display: flex;
   align-items: center;
   width: 100%;
   height: 4%;
   color: white;
-  background-color: rgb(100, 100, 100);
+  background-color: rgb(68, 68, 68);
 }
 
 .right-bottom {
+  border-left: 1px solid rgb(68, 68, 68);
   padding: 20px;
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
-  gap: 20px;
+  gap: 5px;
   width: 70%;
-  background-color: white;
+  background-color: rgb(245, 245, 245);
 }
 
 .gray-bar {
   border-top: 1px solid rgba(199, 199, 199, 0.845);
-  padding-bottom: 20px;
+  padding: 10px 0 0 0;
 }
 
 .check-list {
@@ -94,17 +105,14 @@ body {
 }
 
 .thing-in-list {
+  padding-left: 20px;
   display: flex;
   flex-wrap: wrap;
   word-break: break-all;
   overflow-y: scroll;
   height: 60px;
-  width: 100%;
   justify-content: space-between;
-}
-
-.check-list:last-child {
-  border-bottom: 1px solid rgba(199, 199, 199, 0.845);
+  border: none;
 }
 
 .border {
@@ -125,9 +133,8 @@ body {
 }
 
 .add {
-  border-radius: 5px;
-  margin-top: 5px;
-  background-color: green;
+  width: 58.25px;
+  height: 21px;
 }
 
 .pad {
@@ -138,4 +145,26 @@ body {
   display: flex;
   align-items: center;
   height: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 5px;
+  padding-bottom: 5px;
+}
+
+.left-bb {
+  height: 100%;
+}
+
+#delX {
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid rgb(68, 68, 68);
+  border-bottom: 1px solid rgb(68, 68, 68);
+}
+
+.width {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */

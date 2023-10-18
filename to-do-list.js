@@ -28,10 +28,12 @@ function funListName() {
 function funTitleMaking(listName){
     if (!noList.includes(listName) && listName !== "") {
         let boxCode = `
-        <button class="thing-in-list" id="${listName}">
-            <div class="center">
+        <button class="thing-in-list width" id="${listName}">
+            <div class="center lcen">
                 <h2>${listName}</h2>
-                <button class="${listName}" id="delX">x</button>
+            </div>
+            <div>
+                <button class="${listName}" id="delX">Delete</button>
             </div>
         </button>
         `;
@@ -58,20 +60,24 @@ function funTitleMaking(listName){
 function funMake(listName) {
     let stuffCode = `
         <div>
-            <h1 id="title">${listName}</h1>
+            <div>
+                <h1 id="title">${listName}</h1>
+            </div>
+            <div class="row">
+                <div class="center">
+                    <input type="search" id="word-search">
+                </div>
+                <div class="center">
+                    <button id="select-search">Search</button>
+                </div>
+            </div>
+            <div class="gray-bar"></div>
         </div>
-        <div>
-            <input type="search" id="word-search">
-        </div>
-        <div>
-            <button id="select-search">Search</button>
-        </div>
-        <div class="gray-bar"></div>
         <div id="to-do"></div>
-        <div>
+        <div class="row">
             <input type="text" id="to-do-add">
             <button class="add" id="add">
-                <h3>Add</h3>
+                Add
             </button>
         </div>
     `;
@@ -135,7 +141,7 @@ function funToDo() {
         typedElement.value = "";
     }
 }
-//checks to see if there same things in the ToDo and adds _num
+//checks to see if there are same things in the ToDo and adds _num
 function funMultibles(typedThingToDo){
     const h4s = document.querySelectorAll('h4');
     let existingStuff = [];
@@ -218,7 +224,7 @@ function funButtonDel() {
 
             listOfTDs = listOfTDs.filter(item => item[obName] !== ToBeDel);
             localStorage.setItem('savedTD', JSON.stringify(listOfTDs));
-            del.parentElement.remove();
+            del.parentElement.parentElement.remove();
         });
     });
 }
@@ -227,7 +233,7 @@ function funButtonDel() {
 function funTitlesDel(listName) {
     const xbutton = document.querySelector('#delX');
     xbutton.addEventListener('click', () => {
-        const dely = document.getElementById(listName);
+        const dely = document.getElementById(listName).parentElement;
 
         listOfTDs = listOfTDs.filter(item => !item.hasOwnProperty(listName));
         localStorage.setItem('savedTD', JSON.stringify(listOfTDs));
@@ -255,7 +261,7 @@ function funCheck(){
 
             listOfTDs = listOfTDs.filter(item => item[obName] !== ToBeDel);
             localStorage.setItem('savedTD', JSON.stringify(listOfTDs));
-            setTimeout(() => {  cli.parentElement.parentElement.remove(); }, 1000);
+            setTimeout(() => {  cli.parentElement.parentElement.parentElement.remove(); }, 1000);
         });
     });
     
@@ -266,15 +272,13 @@ function funCheck(){
 //Search
 function funSearch() {
     let word = document.getElementById('word-search').value.toLowerCase().trim();
-
     const h4s = document.querySelectorAll('h4');
-    let existingStuff = [];
 
     for (let i = 0; i < h4s.length; i++) {
-        let newFour = h4s[i].textContent.trim();
-        existingStuff.push(newFour);
-        let thingTNS = h4s[i].parentElement.parentElement.parentElement;
-        if (!existingStuff.includes(word) && word !== '') {
+        let newFour = h4s[i].textContent.toLowerCase().trim();
+        let thingTNS = h4s[i].parentElement.parentElement.parentElement.parentElement;
+        
+        if (!newFour.includes(word) && word !== '') {
             thingTNS.style.display = 'none';
         }
         else{
@@ -282,6 +286,7 @@ function funSearch() {
         }
     }
 }
+
 
 
 //Edit the ToDos
@@ -292,6 +297,7 @@ function funEdit(){
             const selected = ed;
             const oldWord = ed.innerHTML.trim();
             const tempListener = () => {
+                console.log('hi');
                 if(selected.innerHTML !== ''){
                     const title = document.getElementById('title');
                     const obName = title.innerHTML;
