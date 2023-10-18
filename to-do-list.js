@@ -13,10 +13,6 @@ const oldTDs = JSON.parse(localStorage.getItem('savedTD'));
 let listOfTDs = oldTDs ?? [];
 
 
-//search for ToDos
-let selectSearch = document.getElementById('select-search');
-selectSearch.addEventListener('click', funSearch);
-
 //makes the title of the list
 document.getElementById('submit').addEventListener('click', funListName);
 
@@ -64,6 +60,12 @@ function funMake(listName) {
         <div>
             <h1 id="title">${listName}</h1>
         </div>
+        <div>
+            <input type="search" id="word-search">
+        </div>
+        <div>
+            <button id="select-search">Search</button>
+        </div>
         <div class="gray-bar"></div>
         <div id="to-do"></div>
         <div>
@@ -76,8 +78,15 @@ function funMake(listName) {
     let addToRB = document.getElementById('RB');
     addToRB.innerHTML = stuffCode;
 
+    //search for ToDos
+    let selectSearch = document.getElementById('select-search');
+    selectSearch.addEventListener('click', funSearch);
+
     //Inserts the Saved Things
     funCheckSaves(listName);
+
+    //Edit Functionability
+    funEdit();
 
     const add = document.getElementById('add')
     add.addEventListener('click', () => funToDo(listName));
@@ -112,9 +121,6 @@ function funToDo() {
 
         let addToTD = document.getElementById('to-do');
         addToTD.append(emptyDivTD);
-
-        //Edit Functionability
-        funEdit();
 
         //Saving Things
         saveMe(typedThingToDo);
